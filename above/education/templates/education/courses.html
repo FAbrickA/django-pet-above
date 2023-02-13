@@ -1,0 +1,76 @@
+{% extends 'education/base.html' %}
+
+{% load static %}
+
+{% load education_extras %}
+
+{% block navbar %}
+	<li><a href="{% url 'education:index'%}">Home</a></li>
+	<li><a href="{% url 'education:about_us'%}">About Us</a></li>
+	<li class="active"><a href="{% url 'education:courses' %}">Courses</a></li>
+	<li><a href="{% url 'education:portfolio' %}">Portfolio</a></li>
+	<li><a href="{% url 'education:pricing' %}">Pricing</a></li>
+	<li><a href="{% url 'education:contact' %}">Contact</a></li>
+{% endblock navbar %}
+
+{% block content %}
+	<section id="inner-headline">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="pageTitle">Courses</h2>
+			</div>
+		</div>
+	</div>
+	</section>
+	 
+	<section id="content">
+		<div class="container">		 
+				
+	<section class="course"> 
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class=""><h3>Courses We Offer</h3><span class="clear spacer_responsive_hide_mobile " style="height:13px;display:block;"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus, vero mollitia velit ad consectetur. Alias, laborum excepturi nihil autem nemo numquam, ipsa architecto non, magni consequuntur quam.</div>
+			</div>
+		</div>
+		{% for course_chunk in courses|chunks:3 %}
+			<div class="row">
+				{% for course in course_chunk %}
+			        <div class="col-md-4">
+						<a class="textbox" href="{% url 'education:course' course.id %}" style="display: block;">
+			                <h3>{{ course.name }}</h3>
+							<p> {{ course.description }}</p>
+			            </a> 
+			        </div>
+		        {% endfor %}
+		    </div>
+	    {% empty %}
+	    	<h4 class="row text-center">*No courses available for now*</h4>
+    	{% endfor %}
+	</section>	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p> </br>
+        <div class="row service-v1 margin-bottom-40">
+            <div class="col-md-4 md-margin-bottom-40">
+               <img class="img-responsive" src="{% static 'img/service1.jpg' %}" alt="">   
+                <h3>Web Development</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="{% static 'img/service2.jpg' %}" alt="">            
+                <h3>Mobile Development</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
+            </div>
+            <div class="col-md-4 md-margin-bottom-40">
+              <img class="img-responsive" src="{% static 'img/service3.jpg' %}" alt="">  
+                <h3>Responsive Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
+            </div>
+        </div> 
+ 
+
+         
+
+        
+    </div>
+    </section>
+{% endblock content %}
